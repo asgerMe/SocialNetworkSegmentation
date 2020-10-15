@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f988621-2a32-4e2a-b848-b12d2f2792b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/graph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/graph" beforeDir="false" afterPath="$PROJECT_DIR$/data/graph" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+            <state relative-caret-position="221">
+              <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -125,23 +123,6 @@
               <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-              <item name="twitter_graph_iterator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-              <item name="twitter_node_generator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -559,8 +540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        <state relative-caret-position="221">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
