@@ -10,13 +10,6 @@ class GraphIterator:
         self.init_graph()
         self.previous_node = None
 
-    def __add__(self, other):
-        self.seed_names += other.seed_names
-        for val in other.values():
-            self.add_user(val)
-            for cid in other.connections[val.id].keys():
-                self.add_connection(val.id, cid)
-
     def init_graph(self):
         for name in self.seed_names:
             self.expand_graph(name)
@@ -58,7 +51,11 @@ class GraphIterator:
         chosen_index = index_list[followers > r][0]
 
         if chosen_index == self.previous_node:
-            chosen_index = index_list[np.random.randint(0, len(index_list))]
+            pick_seed_name = self.seed_names[np.random.randint(0, len(self.seed_names))]
+            seed_node = self.__node_generator.new(pick_seed_name)
+            print('Resetting: ', pick_seed_name, '-', seed_node.id)
+            return seed_node.id
+
         self.previous_node = chosen_index
 
         return chosen_index

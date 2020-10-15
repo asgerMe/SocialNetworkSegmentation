@@ -32,6 +32,7 @@ class twitterAPIWrapper:
     def get_followers(self, twitter_id='twitterdev'):
         base_url = 'https://api.twitter.com/1.1/followers/list.json?id={}'.format(twitter_id)
         followers = requests.get(base_url, headers={"content-type":"text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
+
         return followers.json()
 
     def get_following(self, twitter_id='twitterdev'):
@@ -42,6 +43,9 @@ class twitterAPIWrapper:
     def get_likes(self, twitter_id='twitterdev'):
         base_url = 'https://api.twitter.com/1.1/favorites/list.json?id={}'.format(twitter_id)
         followers = requests.get(base_url, headers={"content-type": "text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
+        if 'errors' in followers.json():
+            print(followers.json()['errors'])
+            print('..................')
         return followers.json()
 
     def get_tweets(self, twitter_id='twitterdev'):

@@ -74,6 +74,9 @@ class NodeGenerator(api.twitterAPIWrapper):
 
     def get_affiliation(self):
         self.__party = None
+        if not isinstance(self.__description, str):
+            return False
+
         word_list = self.__description.split(' ')
         for key, keywords in self.__affiliation_list.items():
             for keyword in keywords:
