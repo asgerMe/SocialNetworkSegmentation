@@ -2,7 +2,7 @@ import json
 import re
 import os
 import copy
-from source.twitter_node_generator import api
+import api
 
 class NodeGenerator(api.twitterAPIWrapper):
 

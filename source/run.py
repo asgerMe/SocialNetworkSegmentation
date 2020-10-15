@@ -1,11 +1,16 @@
-from source.twitter_graph_iterator.iterator import GraphIterator
-from source.twitter_node_generator.node_generator import NodeGenerator
+import sys
+import os
+
+sys.path.append(os.path.join(os.getcwd(), 'twitter_graph_iterator'))
+sys.path.append(os.path.join(os.getcwd(), 'twitter_node_generator'))
+
+from iterator import GraphIterator
+from node_generator import NodeGenerator
+
 from pathlib import Path
 from ast import literal_eval
 
 import pickle
-import os
-import sys
 import argparse
 
 default_path = os.path.join(Path(os.path.abspath("./")).parents[0], 'data/graph')
@@ -28,7 +33,7 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
         graph_iterator = GraphIterator(NodeGenerator(CREDENTIALS), seed_names=['@RasmusJarlov'])
     else:
         graph_iterator = graph
-    for i in range(20):
+    for i in range(2):
         graph_iterator.next()
         print(len(graph_iterator.nodes.keys()))
 
