@@ -1,9 +1,71 @@
-<!DOCTYPE html>
-<html>
-<body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph 2.</p>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    </head>
+    <body style="background-color: #F5F5F5;">
+    <a href="https://twitter.com/asger_meldgaard?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @TwitterDev</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="github-button" href="https://github.com/asgerMe" data-color-scheme="no-preference: dark; light: dark; dark: dark;" aria-label="Follow @asgerMe on GitHub">Follow @asgerMe</a>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/ntkme/github-buttons/subscription" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-eye" aria-label="Watch ntkme/github-buttons on GitHub">Watch</a>
+    <a class="github-button" href="https://github.com/ntkme/github-buttons" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+    <div style="
+        background-color: #DC143C; 
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px;
+        padding-left: 80px;">
+ 
+    <div> <h1 style="color:white;text-align:center;" ><span style="font-family: Arial, Helvetica, sans-serif">Analyze Danish Political trends</span></h1> </div>
+    <div> <h4 style="color:white;text-align:center;" ><span style="font-family: Arial, Helvetica, sans-serif">With twitter social network segmentation !</span></h4> </div>
+    </div>
+    <canvas style="padding-top: 10px;" id="myCanvas" width=500; height=500;>
+    <script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    // Create gradient
+                    var grd = ctx.createLinearGradient(0,0,0,500);
+                    grd.addColorStop(0,"white");
+                    grd.addColorStop(1,"white");
+                    // Fill with gradient
+                    ctx.fillStyle = grd;
+                    ctx.fillRect(0,0,500,500);
+                    
+                    
+            ctx.beginPath();
+            var gradx = ctx.createLinearGradient(-250.0, 250.0, 750.0, 250.0);
+            gradx.addColorStop(0, "transparent");
+            gradx.addColorStop(0.0, "grey");
+            ctx.strokeStyle = gradx;
+            ctx.moveTo(-250.0, 250.0);
+            ctx.lineTo(750.0, 250.0);
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        
+                    
+             ctx.beginPath();
+             var grady= ctx.createLinearGradient(250.0, -250.0, 250.0, 750.0);
+             grady.addColorStop(0, "transparent");
+             grady.addColorStop(0.0, "grey");
+             ctx.strokeStyle = grady;
+             ctx.moveTo(250.0, -250.0);
+             ctx.lineTo(250.0, 750.0);
+             ctx.stroke();
+         
+                    
+            ctx.beginPath();
+            var gradz= ctx.createLinearGradient(250.0, 250.0, 250.0, 250.0);
+            gradz.addColorStop(0, "transparent");
+            gradz.addColorStop(1.0, "grey");
 
-</body>
-</html>
+            ctx.strokeStyle = gradz;
+            ctx.moveTo(250.0, 250.0);
+            ctx.lineTo(250.0, 250.0);
+            ctx.stroke();
+         
+                  
+        </script>
+    </body>
+    </html>
+    

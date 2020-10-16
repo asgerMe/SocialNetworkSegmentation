@@ -1,13 +1,12 @@
 import sys
 import os
+from pathlib import Path
 
 sys.path.append(os.path.join(os.getcwd(), 'twitter_graph_iterator'))
 sys.path.append(os.path.join(os.getcwd(), 'twitter_node_generator'))
-sys.path.append(os.path.join(os.getcwd(), 'pbd_graph_relaxer'))
 
 from iterator import GraphIterator
 from node_generator import NodeGenerator
-from relaxer import PbdGraphRelaxer
 
 from pathlib import Path
 from ast import literal_eval
@@ -63,6 +62,10 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
 
     write_file = open(args.path, 'wb')
     pickle.dump(graph_iterator, write_file)
+    write_file.close()
 
-if graph is not None:
-    PbdGraphRelaxer(graph)
+web_path = os.path.join(Path(os.path.abspath("./")).parents[0], 'web')
+sys.path.append(web_path)
+from render_website import render
+render(graph_iterator)
+
