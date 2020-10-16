@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f988621-2a32-4e2a-b848-b12d2f2792b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/source/twitter_node_generator/sentiment.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/graph" beforeDir="false" afterPath="$PROJECT_DIR$/data/graph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/feature_mapping/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/feature_mapping/featuremap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/pbd_graph_relaxer/relaxer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -41,6 +34,20 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/stylesheet.css">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -91,6 +98,7 @@
         <option value="$PROJECT_DIR$/source/pbd_graph_relaxer/pbd_graph_relaxer.py" />
         <option value="$PROJECT_DIR$/source/run.py" />
         <option value="$PROJECT_DIR$/source/pbd_graph_relaxer/relaxer.py" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -112,11 +120,6 @@
             <path>
               <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -284,6 +287,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35585585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -593,6 +597,16 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
         </state>
       </provider>
     </entry>
