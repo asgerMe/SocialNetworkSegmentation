@@ -3,11 +3,11 @@ import os
 
 sys.path.append(os.path.join(os.getcwd(), 'twitter_graph_iterator'))
 sys.path.append(os.path.join(os.getcwd(), 'twitter_node_generator'))
-sys.path.append(os.path.join(os.getcwd(), 'feature_mapping'))
+sys.path.append(os.path.join(os.getcwd(), 'pbd_graph_relaxer'))
 
 from iterator import GraphIterator
 from node_generator import NodeGenerator
-from featuremap import get_node_features
+from relaxer import PbdGraphRelaxer
 
 from pathlib import Path
 from ast import literal_eval
@@ -18,10 +18,9 @@ import argparse
 default_path = os.path.join(Path(os.path.abspath("./")).parents[0], 'data/graph')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-path', dest='path', type=str, required=False, default=default_path)
-parser.add_argument('-iter', dest='iterations', type=int, required=False, default=0)
-parser.add_argument('-names', nargs='+', dest='names', required=False, default=[])
-parser.add_argument('-featuremap', dest='featuremap', required=False, default=False, type=bool)
+parser.add_argument('--path', dest='path', type=str, required=False, default=default_path)
+parser.add_argument('--iter', dest='iterations', type=int, required=False, default=0)
+parser.add_argument('--names', nargs='+', dest='names', required=False, default=[])
 args = parser.parse_args()
 graph = None
 graph_iterator = None
@@ -32,10 +31,6 @@ try:
         graph = pickle.load(stored_graph)
 except FileNotFoundError:
     pass
-
-if args.featuremap:
-    get_node_features.get_feature_map()
-
 
 with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/creds.txt'), 'r') as file:
     CREDENTIALS = literal_eval(file.read())
@@ -69,5 +64,5 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
     write_file = open(args.path, 'wb')
     pickle.dump(graph_iterator, write_file)
 
-
-
+if graph is not None:
+    PbdGraphRelaxer(graph)

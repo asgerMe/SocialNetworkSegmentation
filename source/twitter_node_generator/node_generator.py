@@ -3,6 +3,9 @@ import re
 import os
 import copy
 import api
+import numpy as np
+import sys
+sys.path.append(os.getcwd())
 
 class NodeGenerator(api.twitterAPIWrapper):
 
@@ -40,9 +43,25 @@ class NodeGenerator(api.twitterAPIWrapper):
         self.__name = self.get_field('name')
         self.__followers = self.get_field('followers_count')
         self.__party = self.get_affiliation()
+        self.__feature_vector = [0, 0, 0]
+        if self.__party:
+            self.__feature_vector = self.get_feature_map(self.party)
 
         del self.user_object
         return copy.deepcopy(self)
+
+    def get_feature_map(self, party, path=None):
+        if path is None:
+            path = os.path.join(os.path.abspath("./twitter_node_generator"), 'sentiment.json')
+
+        with open(path) as rfile:
+            party_values = json.load(rfile)
+            if party in party_values:
+                prior_mean = party_values[party]
+            else:
+                prior_mean = {'eco': 0, 'img': 0, 'cli': 0}
+
+            return np.random.normal([prior_mean['eco'], prior_mean['img'], prior_mean['cli']], (0.1, 0.1, 0.1))
 
     def get_connections(self, screen_name):
         liked_tweets = self.get_likes(screen_name)
@@ -124,6 +143,10 @@ class NodeGenerator(api.twitterAPIWrapper):
     @property
     def party(self):
         return self.__party
+
+    @property
+    def feature_vector(self):
+        return self.__feature_vector
 
 
 

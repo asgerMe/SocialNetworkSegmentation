@@ -1,0 +1,13 @@
+{"@Spotlik": {"eco": -0.5, "img": 0.6, "cli": -0.15},
+ "@NyeBorgerlige": {"eco": 0.8, "img": 1.0, "cli": -0.75},
+ "@DanskDf1995": {"eco": -0.2, "img": 0.9, "cli": -0.6},
+ "@KonservativeDK": {"eco": 0.6, "img": 0.6, "cli": 0.1},
+ "@venstredk": {"eco": 0.2, "img": 0.4, "cli": 0.5},
+ "@radikale": {"eco": 0.1, "img": -0.7, "cli": 0.8},
+ "@LiberalAlliance": {"eco": 1.0, "img": 0, "cli": -0.5},
+ "@SFpolitik": {"eco": -0.6, "img": -0.3, "cli": 0.6},
+ "@Enhedslisten": {"eco": -1.0, "img": -0.8, "cli": 0.9},
+ "@alternativet_": {"eco": 0.2, "img": -0.9, "cli": 1.0},
+ "@friegronne": {"eco": -0.7, "img": -1.0, "cli": 1.0},
+ "@veganerpartiet": {"eco": -0.7, "img": -0.2, "cli": 1.0}
+ }
