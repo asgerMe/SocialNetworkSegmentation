@@ -61,7 +61,7 @@ class NodeGenerator(api.twitterAPIWrapper):
             else:
                 prior_mean = {'eco': 0, 'img': 0, 'cli': 0}
 
-            return np.random.normal([prior_mean['eco'], prior_mean['img'], prior_mean['cli']], (0.1, 0.1, 0.1))
+            return np.random.normal([prior_mean['eco'], prior_mean['img'], prior_mean['cli']], (0.0, 0.0, 0.0))
 
     def get_connections(self, screen_name):
         liked_tweets = self.get_likes(screen_name)
