@@ -1,19 +1,20 @@
 {
-  "enhedslisten": 
+  "@Enhedslisten":
     [ "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
-  "alternativet": [ "Alternativet" ],
-  "friegroenne": [
+  "@alternativet": [ "Alternativet" ],
+  "@friegronne": [
     "Frie Grønne",
     "friegronne"
   ],
-  "veganerpartiet": [ "Veganerpartiet" ],
-  "radikale": [ "Radikale Venstre" ],
-  "sf": [
+  "@veganerpartiet": [ "Veganerpartiet" ],
+  "@radikale": [ "Radikale Venstre" ],
+  "@SFpolitik": [
     "sf",
     "socialistisk folkeparti"
   ],
 
-  "socialdemokratiet": [
+  "@Spolitik": [
+    "@Spolitik",
     "spolitik",
     "Socialdemokrat",
     "Socialdemokratiet",
@@ -21,29 +22,32 @@
     "S",
     "(S)"
   ],
-  "venstre": [
+  "@venstredk": [
     "venstredk",
     "Venstre",
     "V"
   ],
-  "konservative": [
+  "@KonservativeDK": [
     "Konservativedk",
     "konservative",
     "k"
   ],
-  "df": [
+  "@DanskDf1995": [
     "dansk folkeparti",
     "df",
     "MrMesserschmidt"
   ],
-  "liberalalliance": [
+  "@LiberalAlliance": [
     "Liberal Alliance",
     "Henrik Dahl",
     "Joachim B. Olsen"
   ],
-  "kristendemokraterns": [
+  "@KDDanmark": [
     "Kristendemokraterne",
-    "kd"
+    "kd",
+    "kdpol",
+    "Kristendemokrater",
+    "@KDDanmark"
   ],
-  "nyeborgerlige": [ "Nye Borgerlige" ]
+  "@NyeBorgerlige": [ "Nye Borgerlige" ]
   }

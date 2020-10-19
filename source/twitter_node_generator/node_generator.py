@@ -21,7 +21,7 @@ class NodeGenerator(api.twitterAPIWrapper):
         self.__name = None
         self.__followers = None
         self.__party = None
-
+        self.__feature_vector = None
 
     def new(self, twitter_id):
         if isinstance(twitter_id, dict):
@@ -45,7 +45,7 @@ class NodeGenerator(api.twitterAPIWrapper):
         self.__party = self.get_affiliation()
         self.__feature_vector = [0, 0, 0]
         if self.__party:
-            self.__feature_vector = self.get_feature_map(self.party)
+            self.__feature_vector = self.get_feature_map(self.__party)
 
         del self.user_object
         return copy.deepcopy(self)
@@ -57,15 +57,14 @@ class NodeGenerator(api.twitterAPIWrapper):
         with open(path) as rfile:
             party_values = json.load(rfile)
             if party in party_values:
-                prior_mean = party_values[party]
+                feautres = party_values[party]
+                prior_mean = [feautres['eco'], feautres['img'], feautres['cli']]
             else:
-                prior_mean = {'eco': 0, 'img': 0, 'cli': 0}
-
-            return np.random.normal([prior_mean['eco'], prior_mean['img'], prior_mean['cli']], (0.0, 0.0, 0.0))
+                prior_mean = [0, 0, 0]
+            return prior_mean
 
     def get_connections(self, screen_name):
         liked_tweets = self.get_likes(screen_name)
-
         connections = []
         for tweet in liked_tweets:
             if 'id' in tweet:
@@ -114,6 +113,9 @@ class NodeGenerator(api.twitterAPIWrapper):
                         return key
         return False
 
+    def set_feature_vector(self, new_feature_vector):
+        self.__feature_vector = new_feature_vector
+
     @property
     def id(self):
         return str(self.__id)
@@ -147,6 +149,13 @@ class NodeGenerator(api.twitterAPIWrapper):
     @property
     def feature_vector(self):
         return self.__feature_vector
+
+    @property
+    def screen_name(self):
+        return self.__scname
+
+
+
 
 
 

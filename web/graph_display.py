@@ -1,25 +1,23 @@
 import numpy as np
-import pickle
-import os
-from pathlib import Path
+import re
 
 class GraphDisplay():
     def __init__(self, graph=None, rotatex = 0, rotatey = 0, rotatez = 0):
 
         self.graph = graph
-        self.height = 500
-        self.width = 500
+        self.height = 600
+        self.width = 600
 
         self.center = [self.width/2, self.width/2, 0]
-        self.x0 = [-self.width, 0, 0]
-        self.x1 = [self.width, 0, 0]
+        self.x0 = [-self.width/2, 0, 0]
+        self.x1 = [self.width/2, 0, 0]
 
-        self.y0 = [0, -self.width, 0]
-        self.y1 = [0, self.width, 0]
+        self.y0 = [0, -self.width/2, 0]
+        self.y1 = [0, self.width/2, 0]
 
-        self.z0 = [0, 0, -self.width]
-        self.z1 = [0, 0, self.width]
-        self.R = None;
+        self.z0 = [0, 0, -self.width/2]
+        self.z1 = [0, 0, self.width/2]
+        self.R = None
         self.rotation_matrix(rotatex, rotatey, rotatez)
 
     def rotation_matrix(self, xdeg=0.0, ydeg=0.0, zdeg=0.0):
@@ -42,12 +40,31 @@ class GraphDisplay():
         self.z0 = np.asarray(self.center + self.z0*self.R)[0]
         self.z1 = np.asarray(self.center + self.z1*self.R)[0]
 
+    def create_label_xy(self, text='label'):
+        return '''
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.font = "10px Arial";
+        ctx.fillText("For Immigration", {}, 30);
+        ctx.fillText("Imod Immigration", {}, {});
+        ctx.fillText("Socialistisk", 10, {});
+        ctx.fillText("Liberal", {}, {});
+       
+        
+        '''.format(10 + self.width/2,
+                   10 + self.width/2,
+                   self.height-30,
+                   self.height/2-10,
+                   self.width-60,
+                   self.height/2-10,
+                   )
+
     def create_xaxis(self):
         return '''
             ctx.beginPath();
             var gradx = ctx.createLinearGradient({}, {}, {}, {});
             gradx.addColorStop(0, "transparent");
-            gradx.addColorStop({}, "grey");
+            gradx.addColorStop({}, "white");
             ctx.strokeStyle = gradx;
             ctx.moveTo({}, {});
             ctx.lineTo({}, {});
@@ -60,7 +77,7 @@ class GraphDisplay():
              ctx.beginPath();
              var grady= ctx.createLinearGradient({}, {}, {}, {});
              grady.addColorStop(0, "transparent");
-             grady.addColorStop({}, "grey");
+             grady.addColorStop({}, "white");
              ctx.strokeStyle = grady;
              ctx.moveTo({}, {});
              ctx.lineTo({}, {});
@@ -73,7 +90,7 @@ class GraphDisplay():
             ctx.beginPath();
             var gradz = ctx.createLinearGradient({}, {}, {}, {});
             gradz.addColorStop(0, "transparent");
-            gradz.addColorStop({}, "grey");
+            gradz.addColorStop({}, "white");
 
             ctx.strokeStyle = gradz;
             ctx.moveTo({}, {});
@@ -85,33 +102,30 @@ class GraphDisplay():
     def create_connection(self, p0, p1):
         return '''
             ctx.beginPath();
-            var gradz= ctx.createLinearGradient({}, {}, {}, {});
-            gradz.addColorStop(0, "grey");
-            gradz.addColorStop(1, "grey");
-
-            ctx.strokeStyle = gradz;
+            ctx.strokeStyle = "rgb(190, 190, 255, 0.2)";
             ctx.moveTo({}, {});
             ctx.lineTo({}, {});
             ctx.lineWidth = 2;
             ctx.stroke();
-        '''.format(p0[0], p0[1], p1[0], p1[1], p0[0], p0[1], p1[0], p1[1])
+        
+        '''.format( p0[0], p0[1], p1[0], p1[1], p0[0], p0[1], p1[0], p1[1])
 
     def create_connections(self):
         data = ''
         for cni in self.graph.connections:
             for cnj in self.graph.connections[cni]:
                 node_i = self.graph.nodes[cni].feature_vector
-                node_i = self.center + 2 * self.width * np.asarray(node_i) * self.R
+                node_i = self.center +  self.width/3 * np.asarray(node_i) * self.R
                 node_i = np.asarray(node_i)[0]
 
                 node_j = self.graph.nodes[cnj].feature_vector
-                node_j = self.center + 2 * self.width * np.asarray(node_j) * self.R
+                node_j = self.center + self.width/3 * np.asarray(node_j) * self.R
                 node_j = np.asarray(node_j)[0]
 
                 data += self.create_connection(node_i, node_j)
         return data
 
-    def node(self, x, y, size=10, rgb=(255, 0, 0, 0)):
+    def node(self, x, y, name, size=10, rgb=(255, 0, 0, 0)):
         return '''
   
             var centerX = {};
@@ -125,22 +139,37 @@ class GraphDisplay():
             ctx.lineWidth = 1;
             ctx.lineStyle = 'rgba(0, 0, 0, 1)'
             ctx.stroke();
+            ctx.fillText('{}', {}, {});  
+          
                         
-        '''.format(x, y, size, rgb[0], rgb[1], rgb[2], rgb[3])
+        '''.format(x, y, size, rgb[0], rgb[1], rgb[2], rgb[3], name,  14 + x, y)
 
     def create_nodes(self):
         data = ''
         for n in self.graph.nodes.values():
-            feature_vector = self.center + 2*self.width*np.asarray(n.feature_vector)*self.R
+            feature_vector = self.center + self.width/3*np.asarray(n.feature_vector)*self.R
             feature_vector = np.asarray(feature_vector)[0]
 
-            data += self.node(feature_vector[0],
-                              feature_vector[1],
+            opacity = 1
+            if feature_vector[2] < 0:
+                opacity = abs(feature_vector[2])/200
+
+            color = feature_vector
+            if n.party:
+                aff = n.party
+            else:
+                aff = n.screen_name
+
+            data += self.node(
+                              color[0],
+                              color[1],
+                              aff,
                               0.8*np.log(1 + n.followers),
                               [feature_vector[0],
                                feature_vector[2],
                                feature_vector[1],
-                               1])
+                               opacity],
+                               )
         return data
 
     def script(self):
@@ -149,8 +178,8 @@ class GraphDisplay():
                     var ctx = c.getContext("2d");
                     // Create gradient
                     var grd = ctx.createLinearGradient(0,0,0,{});
-                    grd.addColorStop(0,"white");
-                    grd.addColorStop(1,"white");
+                    grd.addColorStop(0,"rgb(43, 56, 81)");
+                    grd.addColorStop(1,"rgb(43, 56, 81)");
                     // Fill with gradient
                     ctx.fillStyle = grd;
                     ctx.fillRect(0,0,{},{});
@@ -160,6 +189,8 @@ class GraphDisplay():
                     {}
                     {}
                     {}
+                    {}
+                  
                   
         </script>""".format(
                             self.height,
@@ -169,7 +200,8 @@ class GraphDisplay():
                             self.create_yaxis(),
                             self.create_zaxis(),
                             self.create_connections(),
-                            self.create_nodes()
+                            self.create_nodes(),
+                            self.create_label_xy(text='label'),
                             )
 
     def canvas(self):

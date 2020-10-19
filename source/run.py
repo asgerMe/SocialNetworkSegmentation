@@ -34,7 +34,7 @@ except FileNotFoundError:
 with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/creds.txt'), 'r') as file:
     CREDENTIALS = literal_eval(file.read())
     if len(args.names) == 0:
-        names = ['@Spotlik',
+        names = ['@Spolitik',
                  '@NyeBorgerlige',
                  '@DanskDf1995',
                  '@KonservativeDK',
@@ -45,7 +45,8 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
                  '@Enhedslisten',
                  '@alternativet_',
                  '@friegronne',
-                 '@veganerpartiet'
+                 '@veganerpartiet',
+                 "@KDDanmark"
                  ]
     else:
         names = args.names
@@ -66,6 +67,11 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
 
 web_path = os.path.join(Path(os.path.abspath("./")).parents[0], 'web')
 sys.path.append(web_path)
+sys.path.append(os.path.join(os.getcwd(), 'pbd_graph_iterator'))
+
+from pbd_graph_iterator import pbditerator
+pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator)
+
 from render_website import render
-render(graph_iterator)
+render(pbd_iterator.graph)
 

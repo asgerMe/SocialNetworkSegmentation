@@ -43,7 +43,7 @@ def render(graph=None):
     {}
     </body>
     </html>
-    '''.format(htmltag(paragraph('Analyze Danish Political trends')),
+    '''.format(htmltag(paragraph('...')),
            htmltag(paragraph('With twitter social network segmentation !'), p='h4'),
            graph_display.canvas(),
            graph_display.script())
