@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 class PbdGraphIterator:
-    def __init__(self, graph, iterations=120):
+    def __init__(self, graph, iterations=0):
         self.graph = graph
         self.iterator(iterations)
 
@@ -17,7 +17,7 @@ class PbdGraphIterator:
 
 
         if node_i.party and node_i.format_word(node_i.screen_name)[:5] == node_i.format_word(node_i.party)[:5]:
-            wi = 0.1
+            wi = 0.0
 
         for j in inverse_connections[node_i.id]:
             node_j = self.graph.nodes[j]
@@ -25,9 +25,13 @@ class PbdGraphIterator:
             stiffness = self.graph.connections[node_j.id][node_i.id]
             xj = np.asarray(node_j.feature_vector)
             w += wj
-            v += stiffness*(xi - xj)
+
+            if node_j.party:
+                stiffness += 35
+
+            v += stiffness/2*(xi - xj)
         dxi = -wi/w * v
-        node_i.set_feature_vector(node_i.feature_vector + 0.5*dxi)
+        node_i.set_feature_vector(node_i.feature_vector + 0.1*dxi)
 
     def invert_connections(self):
         inverse = {}

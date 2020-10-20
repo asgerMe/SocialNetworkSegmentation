@@ -43,6 +43,7 @@ class twitterAPIWrapper:
     def get_likes(self, twitter_id='twitterdev'):
         base_url = 'https://api.twitter.com/1.1/favorites/list.json?id={}'.format(twitter_id)
         followers = requests.get(base_url, headers={"content-type": "text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
+        print('Call API')
         if 'errors' in followers.json():
             print(followers.json()['errors'])
             print('..................')

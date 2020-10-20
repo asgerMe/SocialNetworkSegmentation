@@ -2,11 +2,11 @@ import numpy as np
 import re
 
 class GraphDisplay():
-    def __init__(self, graph=None, rotatex = 0, rotatey = 0, rotatez = 0):
+    def __init__(self, graph=None, rotatex = 0, rotatey = 0, rotatez = 0, shift=0):
 
         self.graph = graph
-        self.height = 600
-        self.width = 600
+        self.height = 2000
+        self.width = 2000
 
         self.center = [self.width/2, self.width/2, 0]
         self.x0 = [-self.width/2, 0, 0]
@@ -19,7 +19,7 @@ class GraphDisplay():
         self.z1 = [0, 0, self.width/2]
         self.R = None
         self.rotation_matrix(rotatex, rotatey, rotatez)
-
+        self.shift = shift
     def rotation_matrix(self, xdeg=0.0, ydeg=0.0, zdeg=0.0):
         xrad = xdeg * np.pi / 180
         yrad = ydeg * np.pi / 180
@@ -45,9 +45,9 @@ class GraphDisplay():
         ctx.beginPath();
         ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
         ctx.font = "10px Arial";
-        ctx.fillText("For Immigration", {}, 30);
-        ctx.fillText("Imod Immigration", {}, {});
-        ctx.fillText("Socialistisk", 10, {});
+        ctx.fillText("Globalist", {}, 30);
+        ctx.fillText("Nationalist", {}, {});
+        ctx.fillText("Socialist", 10, {});
         ctx.fillText("Liberal", {}, {});
        
         
@@ -108,7 +108,7 @@ class GraphDisplay():
             ctx.lineWidth = 2;
             ctx.stroke();
         
-        '''.format( p0[0], p0[1], p1[0], p1[1], p0[0], p0[1], p1[0], p1[1])
+        '''.format(p0[0], p0[1], p1[0], p1[1], p0[0], p0[1], p1[0], p1[1])
 
     def create_connections(self):
         data = ''
@@ -142,7 +142,7 @@ class GraphDisplay():
             ctx.fillText('{}', {}, {});  
           
                         
-        '''.format(x, y, size, rgb[0], rgb[1], rgb[2], rgb[3], name,  14 + x, y)
+        '''.format(x, y, size/2, rgb[0], rgb[1], rgb[2], rgb[3], name,  14 + x, y)
 
     def create_nodes(self):
         data = ''
@@ -154,27 +154,26 @@ class GraphDisplay():
             if feature_vector[2] < 0:
                 opacity = abs(feature_vector[2])/200
 
-            color = feature_vector
-            if n.party:
-                aff = n.party
-            else:
-                aff = n.screen_name
+            aff = n.screen_name
 
+            color = feature_vector
+            color[2] += 80*(2/5 + feature_vector[2]/self.width)
+            color = 355*color/np.linalg.norm(color)
             data += self.node(
-                              color[0],
-                              color[1],
+                              feature_vector[0],
+                              feature_vector[1],
                               aff,
-                              0.8*np.log(1 + n.followers),
-                              [feature_vector[0],
-                               feature_vector[2],
-                               feature_vector[1],
+                              20*(2/5 + feature_vector[2]/self.width),
+                              [color[0],
+                               color[1],
+                               color[2],
                                opacity],
                                )
         return data
 
     def script(self):
         return """<script>
-                    var c = document.getElementById("myCanvas");
+                    var c = document.getElementById("myCanvas{}");
                     var ctx = c.getContext("2d");
                     // Create gradient
                     var grd = ctx.createLinearGradient(0,0,0,{});
@@ -192,7 +191,7 @@ class GraphDisplay():
                     {}
                   
                   
-        </script>""".format(
+        </script>""".format(self.shift,
                             self.height,
                             self.width,
                             self.height,
@@ -205,4 +204,7 @@ class GraphDisplay():
                             )
 
     def canvas(self):
-        return '<canvas style="padding-top: 10px;" id="myCanvas" width={}; height={};>'.format(self.width, self.height)
+        if self.shift > 0:
+            return '<canvas style="relative: absolute; width: 49%;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)
+        else:
+            return '<canvas style="width: 49%; padding-right: 10px; padding-top: 10px;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)

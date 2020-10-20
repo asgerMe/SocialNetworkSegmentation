@@ -20,6 +20,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--path', dest='path', type=str, required=False, default=default_path)
 parser.add_argument('--iter', dest='iterations', type=int, required=False, default=0)
 parser.add_argument('--names', nargs='+', dest='names', required=False, default=[])
+parser.add_argument('--pbditer', dest='pbditer', required=False, default=0, type=int)
+
 args = parser.parse_args()
 graph = None
 graph_iterator = None
@@ -70,7 +72,7 @@ sys.path.append(web_path)
 sys.path.append(os.path.join(os.getcwd(), 'pbd_graph_iterator'))
 
 from pbd_graph_iterator import pbditerator
-pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator)
+pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator, iterations=int(args.pbditer))
 
 from render_website import render
 render(pbd_iterator.graph)

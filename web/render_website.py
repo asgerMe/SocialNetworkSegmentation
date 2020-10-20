@@ -16,7 +16,8 @@ def paragraph(text=''):
            'Helvetica, sans-serif">{}</span>'.format(text)
 
 def render(graph=None):
-    graph_display = GraphDisplay(graph)
+    graph_display = GraphDisplay(graph, shift=0)
+    graph_display3d = GraphDisplay(graph, rotatex=30, rotatey=30, shift=4)
     template = '''
     <!DOCTYPE html>
     <html>
@@ -39,14 +40,21 @@ def render(graph=None):
     <div> {} </div>
     <div> {} </div>
     </div>
-    {}
-    {}
+    
+    <span>{}</span>
+    <span>{}</span>
+    <span>{}</span>
+    <span>{}</span>
+    
     </body>
     </html>
-    '''.format(htmltag(paragraph('...')),
+    '''.format(htmltag(paragraph('Get political sentiment')),
            htmltag(paragraph('With twitter social network segmentation !'), p='h4'),
            graph_display.canvas(),
-           graph_display.script())
+           graph_display3d.canvas(),
+           graph_display.script(),
+           graph_display3d.script()
+        )
 
     with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'index.html'), 'w') as indexfile:
         indexfile.write(template)
