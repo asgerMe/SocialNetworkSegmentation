@@ -29,7 +29,7 @@ class GraphIterator:
             self.add_user(node_connect)
             self.add_connection(node.id, node_connect.id)
 
-    def next(self, leaf_cutoff=5):
+    def next(self, leaf_cutoff=0):
         followers_list = []
         id_list = []
         for node in self.nodes.values():

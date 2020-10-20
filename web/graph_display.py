@@ -20,6 +20,7 @@ class GraphDisplay():
         self.R = None
         self.rotation_matrix(rotatex, rotatey, rotatez)
         self.shift = shift
+
     def rotation_matrix(self, xdeg=0.0, ydeg=0.0, zdeg=0.0):
         xrad = xdeg * np.pi / 180
         yrad = ydeg * np.pi / 180

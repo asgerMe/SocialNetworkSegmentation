@@ -8,7 +8,7 @@ class twitterAPIWrapper:
         self.CREDENTIALS = key
 
     @classmethod
-    def get_ids(self, request_func):
+    def get_ids(cls, request_func):
         res = []
         for response in request_func:
             if 'id' in response:
