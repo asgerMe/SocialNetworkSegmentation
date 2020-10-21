@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f988621-2a32-4e2a-b848-b12d2f2792b4" name="Default Changelist" comment="test web">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/graph" beforeDir="false" afterPath="$PROJECT_DIR$/data/graph" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/profileTwitterUser/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/profileTwitterUser/profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/graph_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/graph_display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/profile_twitter_user/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/profile_twitter_user/profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/node_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-816">
-              <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="153">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="41" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -34,17 +33,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="952">
+              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="35" selection-start-line="35" selection-end-line="36" selection-end-column="43" />
+            <state relative-caret-position="306">
+              <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -53,43 +52,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/api.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="235" selection-start-line="2" selection-start-column="235" selection-end-line="2" selection-end-column="235" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="510">
+              <caret line="75" column="42" lean-forward="true" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitter_creds/creds.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="225" selection-end-column="225" />
             </state>
           </provider>
         </entry>
@@ -141,25 +110,24 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/source/pbd_graph_iterator/iterator.py" />
         <option value="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" />
-        <option value="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" />
         <option value="$PROJECT_DIR$/source/twitter_node_generator/sentiment.json" />
         <option value="$PROJECT_DIR$/web/render_website.py" />
-        <option value="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" />
-        <option value="$PROJECT_DIR$/source/run.py" />
         <option value="$PROJECT_DIR$/source/profileTwitterUser/__init__.py" />
         <option value="$PROJECT_DIR$/web/graph_display.py" />
         <option value="$PROJECT_DIR$/source/profileTwitterUser/profile.py" />
         <option value="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" />
         <option value="$PROJECT_DIR$/source/twitter_node_generator/api.py" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/config.json" />
+        <option value="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" />
+        <option value="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/profile.py" />
+        <option value="$PROJECT_DIR$/source/run.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="780" />
-    <option name="y" value="10" />
-    <option name="width" value="1107" />
+    <option name="x" value="533" />
+    <option name="width" value="1354" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -185,7 +153,19 @@
               <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="pbd_graph_iterator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="profile_twitter_user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="twitter_graph_iterator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
@@ -197,6 +177,11 @@
               <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
               <item name="twitter_creds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -233,7 +218,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.profile">
+  <component name="RunManager" selected="Python.run (1)">
     <configuration name="featuremap" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SocialNetworkSegmentation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -341,8 +326,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.profile" />
         <item itemvalue="Python.run (1)" />
+        <item itemvalue="Python.profile" />
         <item itemvalue="Python.graph_display" />
         <item itemvalue="Python.render_website" />
         <item itemvalue="Python.featuremap" />
@@ -378,10 +363,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="780" y="10" width="1107" height="1047" extended-state="0" />
+    <frame x="533" y="0" width="1354" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23199251" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18844984" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -490,47 +475,10 @@
     <entry file="file://$PROJECT_DIR$/source/profileTwitterUser/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/graph_display.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/profileTwitterUser/profile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" selection-start-line="35" selection-end-line="36" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -548,32 +496,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/graph_display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/profile.py">
+    <entry file="file://$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#281#976#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/node_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="41" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/node_generator.py">
+    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/profile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="510">
+          <caret line="75" column="42" lean-forward="true" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,9 +4,11 @@ from pathlib import Path
 
 sys.path.append(os.path.join(os.getcwd(), 'twitter_graph_iterator'))
 sys.path.append(os.path.join(os.getcwd(), 'twitter_node_generator'))
+sys.path.append(os.path.join(os.getcwd(), 'profile_twitter_user'))
 
 from iterator import GraphIterator
 from node_generator import NodeGenerator
+from ms_profiler import MSProfileUser
 
 from pathlib import Path
 from ast import literal_eval
@@ -21,6 +23,7 @@ parser.add_argument('--path', dest='path', type=str, required=False, default=def
 parser.add_argument('--iter', dest='iterations', type=int, required=False, default=0)
 parser.add_argument('--names', nargs='+', dest='names', required=False, default=[])
 parser.add_argument('--pbditer', dest='pbditer', required=False, default=0, type=int)
+parser.add_argument('--profile', dest='profile', required=False, default='', type=str)
 
 args = parser.parse_args()
 graph = None
@@ -56,6 +59,7 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
         graph_iterator = GraphIterator(NodeGenerator(CREDENTIALS), seed_names=names)
     else:
         graph_iterator = graph
+
     for i in range(args.iterations):
         graph_iterator.next()
         print('ITERATION: {}'.format(i))
@@ -72,8 +76,17 @@ sys.path.append(web_path)
 sys.path.append(os.path.join(os.getcwd(), 'pbd_graph_iterator'))
 
 from pbd_graph_iterator import pbditerator
-pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator, iterations=int(args.pbditer))
+if args.pbditer > 0:
+    pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator, iterations=int(args.pbditer))
+    write_file = open(args.path, 'wb')
+    pickle.dump(pbd_iterator.graph, write_file)
+    write_file.close()
 
-from render_website import render
-render(pbd_iterator.graph)
+    from render_website import render
+    render(pbd_iterator.graph)
+
+if args.profile != '':
+    profiler = MSProfileUser(graph, NodeGenerator())
+
+
 

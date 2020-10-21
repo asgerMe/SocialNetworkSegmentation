@@ -22,7 +22,7 @@ class PbdGraphIterator:
         for j in inverse_connections[node_i.id]:
             node_j = self.graph.nodes[j]
             wj = 1.0
-            stiffness = self.graph.connections[node_j.id][node_i.id]
+            stiffness = 1.0 #self.graph.connections[node_j.id][node_i.id]
             xj = np.asarray(node_j.feature_vector)
             w += wj
 

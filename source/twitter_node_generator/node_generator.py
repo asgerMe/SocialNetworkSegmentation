@@ -12,7 +12,6 @@ class NodeGenerator(api.twitterAPIWrapper):
     def __init__(self, CREDENTIALS):
         super().__init__(CREDENTIALS)
         self.user_object = None
-        self.__affiliation_list = self.load_affiliation_list()
         self.__scname = None
         self.__id = None
         self.__description = None
@@ -96,7 +95,8 @@ class NodeGenerator(api.twitterAPIWrapper):
             return False
 
         word_list = self.__description.split(' ')
-        for key, keywords in self.__affiliation_list.items():
+        affiliation_list = self.load_affiliation_list()
+        for key, keywords in affiliation_list.items():
             for keyword in keywords:
                 keyword = self.format_word(keyword)
                 for idx, word in enumerate(word_list):
