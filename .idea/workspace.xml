@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f988621-2a32-4e2a-b848-b12d2f2792b4" name="Default Changelist" comment="test web">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/graph" beforeDir="false" afterPath="$PROJECT_DIR$/data/graph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/graph_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/graph_display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/render_website.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/render_website.py" afterDir="false" />
-    </list>
+    <list default="true" id="9f988621-2a32-4e2a-b848-b12d2f2792b4" name="Default Changelist" comment="test web" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="357">
+              <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -601,8 +589,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="12" />
+        <state relative-caret-position="357">
+          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
