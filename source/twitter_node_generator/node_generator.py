@@ -98,6 +98,8 @@ class NodeGenerator(api.twitterAPIWrapper):
         affiliation_list = self.load_affiliation_list()
         for key, keywords in affiliation_list.items():
             for keyword in keywords:
+                if not isinstance(keyword, str):
+                    continue
                 keyword = self.format_word(keyword)
                 for idx, word in enumerate(word_list):
                     word0 = self.format_word(word)

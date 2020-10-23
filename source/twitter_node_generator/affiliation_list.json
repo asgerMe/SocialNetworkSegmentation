@@ -1,19 +1,22 @@
 {
   "@Enhedslisten":
-    [ "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
-  "@alternativet": [ "Alternativet" ],
+    [{"eco": -1.0, "img": -0.8, "cli": 0.8}, "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
+  "@alternativet": [{"eco": 0.2, "img": -0.9, "cli": 0.9}, "Alternativet" ],
   "@friegronne": [
+    {"eco": -0.7, "img": -1.0, "cli": 1.0},
     "Frie Grønne",
     "friegronne"
   ],
-  "@veganerpartiet": [ "Veganerpartiet" ],
-  "@radikale": [ "Radikale Venstre" ],
+  "@veganerpartiet": [{"eco": 0.0, "img": 0.0, "cli": 1.0}, "Veganerpartiet" ],
+  "@radikale": [{"eco": 0.3, "img": -0.8, "cli": 0.8},"Radikale Venstre" ],
   "@SFpolitik": [
+    {"eco": -0.6, "img": -0.3, "cli": 0.7},
     "sf",
     "socialistisk folkeparti"
   ],
 
   "@Spolitik": [
+     {"eco": -0.75, "img": 0.75, "cli": -0.35},
     "@Spolitik",
     "spolitik",
     "Socialdemokrat",
@@ -23,31 +26,36 @@
     "(S)"
   ],
   "@venstredk": [
+     {"eco": 0.8, "img": 0.2, "cli": 0.1},
     "venstredk",
     "Venstre",
     "V"
   ],
   "@KonservativeDK": [
+     {"eco": 0.5, "img": 0.6, "cli": -0.3},
     "Konservativedk",
     "konservative",
     "k"
   ],
   "@DanskDf1995": [
+    {"eco": 0.0, "img": 0.9, "cli": -0.3},
     "dansk folkeparti",
     "df",
     "MrMesserschmidt"
   ],
   "@LiberalAlliance": [
+    {"eco": 1.0, "img": 0.0, "cli": 0.0},
     "Liberal Alliance",
     "Henrik Dahl",
     "Joachim B. Olsen"
   ],
   "@KDDanmark": [
+    {"eco": -0.6, "img": -0.7, "cli": 0.6},
     "Kristendemokraterne",
     "kd",
     "kdpol",
     "Kristendemokrater",
     "@KDDanmark"
   ],
-  "@NyeBorgerlige": [ "Nye Borgerlige" ]
+  "@NyeBorgerlige": [{"eco": 0.8, "img": 1.0, "cli": -0.8}, "Nye Borgerlige" ]
   }

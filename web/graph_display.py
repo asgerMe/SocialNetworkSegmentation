@@ -1,6 +1,7 @@
 import numpy as np
 import re
-
+import copy
+from colorhash import ColorHash
 class GraphDisplay():
     def __init__(self, graph=None, rotatex = 0, rotatey = 0, rotatez = 0, shift=0):
 
@@ -151,15 +152,22 @@ class GraphDisplay():
             feature_vector = self.center + self.width/3*np.asarray(n.feature_vector)*self.R
             feature_vector = np.asarray(feature_vector)[0]
 
+            color = copy.deepcopy(feature_vector)
             opacity = 1
-            if feature_vector[2] < 0:
-                opacity = abs(feature_vector[2])/200
+            if color[2] < 0:
+                opacity = abs(color[2])/200
 
             aff = n.screen_name
 
-            color = feature_vector
             color[2] += 80*(2/5 + feature_vector[2]/self.width)
-            color = 355*color/np.linalg.norm(color)
+
+            if n.party:
+                c = ColorHash(n.party)
+                add_color = np.asarray(c.rgb)
+                opacity = 1.0
+                color = add_color
+
+            color = 355 * color / np.linalg.norm(color)
             data += self.node(
                               feature_vector[0],
                               feature_vector[1],
@@ -206,6 +214,6 @@ class GraphDisplay():
 
     def canvas(self):
         if self.shift > 0:
-            return '<canvas style="relative: absolute; width: 49%;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)
+            return '<canvas style="relative: absolute; width: 100%;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)
         else:
-            return '<canvas style="width: 49%; padding-right: 10px; padding-top: 10px;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)
+            return '<canvas style="width: 100%; padding-right: 10px; padding-top: 10px;" id="myCanvas{}" width={}; height={};>'.format(self.shift, self.width, self.height)
