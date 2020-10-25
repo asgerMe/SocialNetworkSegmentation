@@ -22,7 +22,7 @@ class NodeGenerator(api.twitterAPIWrapper):
         self.__party = None
         self.__feature_vector = None
 
-    def new(self, twitter_id):
+    def new(self, twitter_id, party=None):
         if isinstance(twitter_id, dict):
             self.user_object = twitter_id
 
@@ -42,6 +42,10 @@ class NodeGenerator(api.twitterAPIWrapper):
         self.__name = self.get_field('name')
         self.__followers = self.get_field('followers_count')
         self.__party = self.get_affiliation()
+
+        if party:
+            self.__party = party
+
         self.__feature_vector = [0, 0, 0]
         if self.__party:
             self.__feature_vector = self.get_feature_map(self.__party)

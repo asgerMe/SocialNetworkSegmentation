@@ -15,6 +15,12 @@ class twitterAPIWrapper:
                 res.append(response['id'])
         return list(np.unique(res))
 
+    def get_users_by_topic(self, topic):
+        base_url = 'https://api.twitter.com/1.1/users/search.json?q={}'.format(topic)
+        followers = requests.get(base_url, headers={"content-type": "text",
+                                                    'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
+        return followers.json()
+
     def get_user_by_screen_name(self, screen_name='twitterdev'):
         base_url = 'https://api.twitter.com/1.1/users/show.json?screen_name={}'.format(screen_name)
         followers = requests.get(base_url, headers={"content-type": "text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})

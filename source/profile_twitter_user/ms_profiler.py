@@ -15,6 +15,11 @@ class MSProfileUser:
         self.__inverse_connections = self.invert_connections()
         self.__followers = []
 
+        self.parties = []
+        self.economy = []
+        self.immigration = []
+        self.climate = []
+
         self.samples = np.asmatrix([0, 0, 0])
         if not isinstance(name, list):
             twitter_info = nodegen.new(name)
@@ -43,7 +48,41 @@ class MSProfileUser:
                     mc_sample = self.monte_carlo(f, samples=fsamples, discount=discount)
                     if len(mc_sample) > 0:
                         weak_learners.append(mc_sample)
+
+        self.QDA()
         return weak_learners[0]
+
+    def QDA(self, profile_feature=''):
+        party_features = dict(ALL=[])
+        for node_id in self.__graph.nodes:
+            node = self.__graph.nodes[node_id]
+            if node and node.party:
+                if not node.party in party_features:
+                    party_features[node.party] = [node.feature_vector]
+                else:
+                    party_features[node.party].append(node.feature_vector)
+            else:
+                party_features['ALL'].append(node.feature_vector)
+        mean_feature = np.mean(party_features['ALL'], axis=0)
+        for party_key, party_features in party_features.items():
+            party_feature = np.asarray(party_features) - mean_feature
+            print(np.shape(party_feature))
+        #unit_profile_feature = profile_feature / np.linalg.norm(profile_feature)
+
+        #for party, party_feature in party_features.items():
+        #    party_feature = np.mean(np.asarray(party_feature), axis=0)
+        #    party_feature = party_feature - np.mean(party_features['ALL'], axis=0)
+        #    unit_party_feature = party_feature / np.linalg.norm(party_feature)
+        #    feature_distance = np.dot(unit_party_feature, unit_profile_feature)
+
+
+        return 0
+
+    def get_covariance(self, features):
+        return 0
+
+    def get_mean(self, features):
+        return 0
 
     def get_follower_nodes(self):
         follow_response = self.profile_node.get_followers(self.profile_node.screen_name)
@@ -136,6 +175,18 @@ class MSProfileUser:
 
                 chain_length += 1
 
+        self.economy, _ = np.histogram(self.samples[:, 0], bins=1000, range=(-1, 1))
+        self.economy = np.cumsum(self.economy)
+        self.economy = (self.economy - np.min(self.economy))/np.max(self.economy)
+
+        self.immigration, _ = np.histogram(self.samples[:, 1], bins=1000, range=(-1, 1))
+        self.immigration = np.cumsum(self.immigration)
+        self.immigration = (self.immigration - np.min(self.immigration))/np.max(self.immigration)
+
+        self.climate, _ = np.histogram(self.samples[:, 2], bins=1000, range=(-1, 1))
+        self.climate = np.cumsum(self.climate)
+        self.climate = (self.climate - np.min(self.climate))/np.max(self.climate)
+
         profile_vector = np.asarray(np.mean(self.samples, axis=0))[0]
         return profile_vector / np.sum(np.abs(profile_vector))
 
@@ -143,8 +194,8 @@ class MSProfileUser:
         if len(self.samples) == 0:
             return None
         fig, axs = plt.subplots(1, 3, sharey=True, tight_layout=True)
-        axs[0].hist(self.samples[:, 0], bins=200)
-        axs[1].hist(self.samples[:, 1], bins=200)
-        axs[2].hist(self.samples[:, 2], bins=200)
+        axs[0].plot(self.economy)
+        axs[1].plot(self.immigration)
+        axs[2].plot(self.climate)
         plt.show()
 
