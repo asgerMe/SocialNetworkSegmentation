@@ -34,7 +34,7 @@ parser.add_argument('--names', nargs='+', dest='names', required=False, default=
 parser.add_argument('--pbditer', dest='pbditer', required=False, default=0, type=int)
 parser.add_argument('--profile', dest='profile', required=False, default='', type=str)
 parser.add_argument('--mcsamples', dest='mcsamples', required=False, default=500, type=int)
-parser.add_argument('--fmcsamples', dest='fmcsamples', required=False, default=50, type=int)
+parser.add_argument('--fmcsamples', dest='fmcsamples', required=False, default=100, type=int)
 parser.add_argument('-show', dest='show', action='store_true')
 parser.add_argument('--partyprofile', dest='partyprofile', action='store_true')
 parser.add_argument('--setparty', dest='setparty', type=str, default='')

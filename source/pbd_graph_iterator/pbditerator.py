@@ -57,8 +57,7 @@ class PbdGraphIterator:
             v += d*stiffness * dx_ij
 
         dxi = -wi/w * v
-        if not node_i.party:
-            dxi = dxi - self.CM
+        dxi = dxi - self.CM
 
         new_feature_vector = node_i.feature_vector + 0.5*dxi
         node_i.set_feature_vector(new_feature_vector)

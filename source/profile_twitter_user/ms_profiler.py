@@ -19,14 +19,14 @@ class MSProfileUser:
         self.economy = []
         self.immigration = []
         self.climate = []
-
         self.samples = np.asmatrix([0, 0, 0])
         if not isinstance(name, list):
             twitter_info = nodegen.new(name)
             if twitter_info.id in self.__graph.nodes:
                 self.profile_node = self.__graph.nodes[twitter_info.id]
             else:
-                raise AttributeError('User is not present in graph')
+                raise ValueError('Warning - Profile not found in graph - additional feature propagation might be required !')
+
         else:
             for twitter_id in name:
                 self.__followers.append(self.__graph.nodes[twitter_id])

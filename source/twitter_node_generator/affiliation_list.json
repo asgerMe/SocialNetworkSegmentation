@@ -1,7 +1,7 @@
 {
   "@Enhedslisten":
     [{"eco": -1.0, "img": -0.5, "cli": 0.1}, "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
-  "@alternativet": [{"eco": 0.2, "img": -0.3, "cli": 1.0}, "Alternativet" ],
+  "@alternativet": [{"eco": 0.0, "img": -0.5, "cli": 1.0}, "Alternativet" ],
   "@friegronne": [
     {"eco": 0.0, "img": -1.0, "cli": 1.0},
     "Frie Grønne",
@@ -26,13 +26,13 @@
     "(S)"
   ],
   "@venstredk": [
-     {"eco": 0.7, "img": 0.2, "cli": 0.4},
+     {"eco": 0.7, "img": 0.6, "cli": 0.4},
     "venstredk",
     "Venstre",
     "V"
   ],
   "@KonservativeDK": [
-     {"eco": 0.7, "img": 0.6, "cli": 0.0},
+     {"eco": 0.7, "img": 0.8, "cli": 0.0},
     "Konservativedk",
     "konservative",
     "k"
@@ -44,7 +44,7 @@
     "MrMesserschmidt"
   ],
   "@LiberalAlliance": [
-    {"eco": 1.0, "img": 0.0, "cli": -1.0},
+    {"eco": 1.0, "img": 0.0, "cli": 0.0},
     "Liberal Alliance",
     "Henrik Dahl",
     "Joachim B. Olsen"
