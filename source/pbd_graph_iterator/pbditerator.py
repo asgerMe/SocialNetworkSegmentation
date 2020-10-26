@@ -47,20 +47,20 @@ class PbdGraphIterator:
             w += 1.0
             dx_ij = (xi - xj)
 
+            if node_i.party:
+                pfeature = self.affiliation_list[node_i.party]
+                dx_ij += xi - np.asarray([pfeature[0]['eco'], pfeature[0]['img'] , pfeature[0]['cli']])
+
             if not node_j.party and not node_i.party:
-                stiffness = 0.3
-            if node_j.party and node_i.party and node_j.party != node_i.party:
-                dx_ij = -dx_ij
+                stiffness = 0.01
 
             v += d*stiffness * dx_ij
 
         dxi = -wi/w * v
         if not node_i.party:
-           dxi = dxi - self.CM
+            dxi = dxi - self.CM
 
         new_feature_vector = node_i.feature_vector + 0.5*dxi
-
-        new_feature_vector = new_feature_vector / ( np.linalg.norm(new_feature_vector) + 0.0000001 )
         node_i.set_feature_vector(new_feature_vector)
 
     def invert_connections(self):
@@ -88,8 +88,13 @@ class PbdGraphIterator:
             self.CM = np.asarray([0.0, 0.0, 0.0])
             n = 0
             for node in self.graph.nodes.values():
-                self.CM += np.asarray(node.feature_vector)
+                node.set_feature_vector(node.feature_vector / (np.linalg.norm(node.feature_vector) + 0.0000001))
+                if node.party:
+                    self.CM += 20*np.asarray(node.feature_vector)
+                else:
+                    self.CM += np.asarray(node.feature_vector)
                 n += 1
+
             self.CM = self.CM/n
 
 

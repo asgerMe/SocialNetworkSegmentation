@@ -36,13 +36,13 @@ class twitterAPIWrapper:
         return followers.json()
 
     def get_followers(self, twitter_id='twitterdev'):
-        base_url = 'https://api.twitter.com/1.1/followers/list.json?id={}'.format(twitter_id)
+        base_url = 'https://api.twitter.com/1.1/followers/list.json?id={}&count=500'.format(twitter_id)
         followers = requests.get(base_url, headers={"content-type":"text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
 
         return followers.json()
 
     def get_following(self, twitter_id='twitterdev'):
-        base_url = 'https://api.twitter.com/1.1/friends/list.json?twitter_id={}'.format(twitter_id)
+        base_url = 'https://api.twitter.com/1.1/friends/list.json?twitter_id={}&count=500'.format(twitter_id)
         followers = requests.get(base_url, headers={"content-type":"text", 'authorization': 'Bearer {}'.format(self.CREDENTIALS['token'])})
         return followers.json()
 

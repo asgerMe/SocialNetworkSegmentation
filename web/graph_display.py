@@ -149,6 +149,8 @@ class GraphDisplay():
     def create_nodes(self):
         data = ''
         for n in self.graph.nodes.values():
+            #if not n.party:
+            #   continue
             feature_vector = self.center + self.width/3*np.asarray(n.feature_vector)*self.R
             feature_vector = np.asarray(feature_vector)[0]
 

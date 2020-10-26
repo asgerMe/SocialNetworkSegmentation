@@ -1,22 +1,22 @@
 {
   "@Enhedslisten":
-    [{"eco": -1.0, "img": -0.5, "cli": 0.5}, "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
-  "@alternativet": [{"eco": -0.0, "img": -0.6, "cli": 0.9}, "Alternativet" ],
+    [{"eco": -1.0, "img": -0.5, "cli": 0.1}, "enhedslisten", "Enhedslistens", "Democratic Socialist" ],
+  "@alternativet": [{"eco": 0.2, "img": -0.3, "cli": 1.0}, "Alternativet" ],
   "@friegronne": [
-    {"eco": -0.7, "img": -1.0, "cli": 1.0},
+    {"eco": 0.0, "img": -1.0, "cli": 1.0},
     "Frie Grønne",
     "friegronne"
   ],
   "@veganerpartiet": [{"eco": 0.0, "img": 0.0, "cli": 1.0}, "Veganerpartiet" ],
-  "@radikale": [{"eco": 1.0, "img": -1.0, "cli": 1.0},"Radikale Venstre" ],
+  "@radikale": [{"eco": 0.7, "img": -0.7, "cli": 1.0},"Radikale Venstre" ],
   "@SFpolitik": [
-    {"eco": -0.6, "img": 0.0, "cli": 0.5},
+    {"eco": -0.6, "img": 0.1, "cli": 0.8},
     "sf",
     "socialistisk folkeparti"
   ],
 
   "@Spolitik": [
-     {"eco": -0.75, "img": 0.75, "cli": -0.35},
+     {"eco": -0.3, "img": 1.0, "cli": 0.0},
     "@Spolitik",
     "spolitik",
     "Socialdemokrat",
@@ -26,36 +26,36 @@
     "(S)"
   ],
   "@venstredk": [
-     {"eco": 0.8, "img": 0.2, "cli": 0.1},
+     {"eco": 0.7, "img": 0.2, "cli": 0.4},
     "venstredk",
     "Venstre",
     "V"
   ],
   "@KonservativeDK": [
-     {"eco": 0.5, "img": 0.6, "cli": -0.3},
+     {"eco": 0.7, "img": 0.6, "cli": 0.0},
     "Konservativedk",
     "konservative",
     "k"
   ],
   "@DanskDf1995": [
-    {"eco": 0.0, "img": 0.9, "cli": -0.3},
+    {"eco": 0.0, "img": 1.0, "cli": -1.0},
     "dansk folkeparti",
     "df",
     "MrMesserschmidt"
   ],
   "@LiberalAlliance": [
-    {"eco": 1.0, "img": -0.3, "cli": 0.0},
+    {"eco": 1.0, "img": 0.0, "cli": -1.0},
     "Liberal Alliance",
     "Henrik Dahl",
     "Joachim B. Olsen"
   ],
   "@KDDanmark": [
-    {"eco": -0.6, "img": -0.7, "cli": 0.6},
+    {"eco": 0.4, "img": -0.7, "cli": 0.8},
     "Kristendemokraterne",
     "kd",
     "kdpol",
     "Kristendemokrater",
     "@KDDanmark"
   ],
-  "@NyeBorgerlige": [{"eco": 0.8, "img": 1.0, "cli": -0.8}, "Nye Borgerlige" ]
+  "@NyeBorgerlige": [{"eco": 1.0, "img": 1.0, "cli": -1.0}, "Nye Borgerlige" ]
   }

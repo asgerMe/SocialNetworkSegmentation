@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from collections import Counter
 from ast import literal_eval
-
+from scipy.stats import multivariate_normal
 
 class MSProfileUser:
 
@@ -34,25 +34,46 @@ class MSProfileUser:
 
         self.__name = name
 
-    def __call__(self, samples=1000, fsamples=10, discount=0.95):
+    def __call__(self, samples, fsamples, discount=0.85):
         if fsamples > 0 and isinstance(self.__name, str):
             self.get_follower_nodes()
             self.get_following_nodes()
 
-        weak_learners = []
+        weak_learners = np.asarray([0.0, 0.0, 0.0])
+        n = 1
         if samples > 0:
             if self.profile_node:
-                weak_learners.append(self.monte_carlo(self.profile_node, samples=samples, discount=discount))
+                weak_learners = self.monte_carlo(self.profile_node, samples=samples, discount=discount)
+        if fsamples > 0:
             if len(self.__followers) > 0:
                 for f in self.__followers:
+                    print(f.name)
                     mc_sample = self.monte_carlo(f, samples=fsamples, discount=discount)
                     if len(mc_sample) > 0:
-                        weak_learners.append(mc_sample)
+                        weak_learners += mc_sample
+                        n += 1
+        weak_learners = weak_learners / n
+        QDA_result, keys = self.QDA(weak_learners)
 
-        self.QDA()
-        return weak_learners[0]
+        print('BEST SCORE', weak_learners, keys[np.argmax(QDA_result)], str(np.round(100*QDA_result[np.argmax(QDA_result)])) + '%')
 
-    def QDA(self, profile_feature=''):
+        sorted_idx = np.argsort(QDA_result)
+
+        for qdaidx in sorted_idx[-3:]:
+            print(keys[qdaidx], str(np.round(100*QDA_result[qdaidx])) + '%')
+
+        print(QDA_result, keys)
+        return weak_learners
+
+    def check_likes_for_party_affiliation(self, node, feature_list):
+        if node.id not in self.__graph.connections:
+            return feature_list
+
+        for c_node_id in self.__graph.connections[node.id]:
+            feature_list[node.party].append( self.__graph.nodes[c_node_id].feature_vector)
+        return feature_list
+
+    def QDA(self, profile_feature):
         party_features = dict(ALL=[])
         for node_id in self.__graph.nodes:
             node = self.__graph.nodes[node_id]
@@ -61,34 +82,43 @@ class MSProfileUser:
                     party_features[node.party] = [node.feature_vector]
                 else:
                     party_features[node.party].append(node.feature_vector)
+                party_features = self.check_likes_for_party_affiliation(node, party_features)
             else:
                 party_features['ALL'].append(node.feature_vector)
-        mean_feature = np.mean(party_features['ALL'], axis=0)
-        for party_key, party_features in party_features.items():
-            party_feature = np.asarray(party_features) - mean_feature
-            print(np.shape(party_feature))
-        #unit_profile_feature = profile_feature / np.linalg.norm(profile_feature)
 
-        #for party, party_feature in party_features.items():
-        #    party_feature = np.mean(np.asarray(party_feature), axis=0)
-        #    party_feature = party_feature - np.mean(party_features['ALL'], axis=0)
-        #    unit_party_feature = party_feature / np.linalg.norm(party_feature)
-        #    feature_distance = np.dot(unit_party_feature, unit_profile_feature)
+        pxk_pk = []
+        party_names = []
+        n = 0
 
+        for party_key, party_feature in party_features.items():
+            if party_key == 'ALL':
+                continue
+            n += np.shape(party_feature)[0]
 
-        return 0
+        for party_key, party_feature in party_features.items():
+            if party_key == 'ALL':
+                continue
+            feature_mean, feature_covariance = self.get_mean_and_covariance(party_feature)
+            print(feature_mean, profile_feature, np.linalg.norm(feature_mean - profile_feature), party_key)
+            Nk = multivariate_normal(feature_mean, feature_covariance)
+            pxk_pk.append(Nk.pdf(profile_feature)*np.shape(party_feature)[0]/n)
+            party_names.append(party_key)
 
-    def get_covariance(self, features):
-        return 0
+        return np.asarray(pxk_pk) / np.sum(pxk_pk), party_names
 
-    def get_mean(self, features):
-        return 0
+    def get_mean_and_covariance(self, features):
+        feature = np.asarray(features)
+        feature_mean = np.mean(features, axis=0)
+        feature_covariance = np.cov(feature.T)
+
+        return feature_mean, feature_covariance
 
     def get_follower_nodes(self):
         follow_response = self.profile_node.get_followers(self.profile_node.screen_name)
         if 'users' in follow_response:
             for user in follow_response['users']:
                 if user['id_str'] in self.__graph.nodes:
+                    print(user['name'])
                     self.__followers.append(self.__graph.nodes[user['id_str']])
 
     def get_following_nodes(self):
@@ -96,6 +126,7 @@ class MSProfileUser:
         if 'users' in follow_response:
             for user in follow_response['users']:
                 if user['id_str'] in self.__graph.nodes:
+                    print(user['name'])
                     self.__followers.append(self.__graph.nodes[user['id_str']])
 
     def invert_connections(self):
@@ -147,7 +178,7 @@ class MSProfileUser:
 
         return self.pick_parent(feature_distances, id_list)
 
-    def monte_carlo(self, root_node, samples=1, discount=0.4):
+    def monte_carlo(self, root_node, samples=1, discount=0.95):
         if not root_node:
             raise ValueError('User not found !')
 
@@ -157,6 +188,7 @@ class MSProfileUser:
                 return root_node.feature_vector
 
             feature_vectors = [root_node.feature_vector]
+            self.samples = np.concatenate([self.samples, np.asmatrix(root_node.feature_vector)], axis=0)
             node_list = [0, 0]
             chain_length = 0
 
@@ -169,33 +201,21 @@ class MSProfileUser:
                     self.samples = np.concatenate([self.samples, feature_vectors], axis=0)
                     break
 
-                feature_vectors.append(np.asarray(node.feature_vector) * np.exp(
-                    -2.0 * np.linalg.norm(np.asarray(root_node.feature_vector) - np.asarray(node.feature_vector))))
+                feature_vectors.append(np.asarray(node.feature_vector))
                 node_list.append(node.id)
-
                 chain_length += 1
 
-        self.economy, _ = np.histogram(self.samples[:, 0], bins=1000, range=(-1, 1))
-        self.economy = np.cumsum(self.economy)
-        self.economy = (self.economy - np.min(self.economy))/np.max(self.economy)
+        RESULT =  np.asarray(np.mean(self.samples, axis=0))[0]
+        RESULT = RESULT / (0.000001 + np.linalg.norm(RESULT))
+        return RESULT
 
-        self.immigration, _ = np.histogram(self.samples[:, 1], bins=1000, range=(-1, 1))
-        self.immigration = np.cumsum(self.immigration)
-        self.immigration = (self.immigration - np.min(self.immigration))/np.max(self.immigration)
-
-        self.climate, _ = np.histogram(self.samples[:, 2], bins=1000, range=(-1, 1))
-        self.climate = np.cumsum(self.climate)
-        self.climate = (self.climate - np.min(self.climate))/np.max(self.climate)
-
-        profile_vector = np.asarray(np.mean(self.samples, axis=0))[0]
-        return profile_vector / np.sum(np.abs(profile_vector))
 
     def show(self):
         if len(self.samples) == 0:
             return None
         fig, axs = plt.subplots(1, 3, sharey=True, tight_layout=True)
-        axs[0].plot(self.economy)
-        axs[1].plot(self.immigration)
-        axs[2].plot(self.climate)
+        axs[0].hist(self.samples[:, 0], bins=200)
+        axs[1].hist(self.samples[:, 1], bins=200)
+        axs[2].hist(self.samples[:, 2], bins=200)
         plt.show()
 
