@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from ast import literal_eval
 from scipy.stats import multivariate_normal
+import naive_bayes_profiler
 
 class MSProfileUser:
 
@@ -20,13 +21,17 @@ class MSProfileUser:
         self.immigration = []
         self.climate = []
         self.samples = np.asmatrix([0, 0, 0])
+
+        self.naive_bayes_classifier = naive_bayes_profiler.NaiveBayesClassifier(name, graph, nodegen)
+        self.naive_bayes_result = self.naive_bayes_classifier()
+        print(self.naive_bayes_result)
+
         if not isinstance(name, list):
             twitter_info = nodegen.new(name)
             if twitter_info.id in self.__graph.nodes:
                 self.profile_node = self.__graph.nodes[twitter_info.id]
             else:
                 raise ValueError('Warning - Profile not found in graph - additional feature propagation might be required !')
-
         else:
             for twitter_id in name:
                 self.__followers.append(self.__graph.nodes[twitter_id])
@@ -47,22 +52,18 @@ class MSProfileUser:
         if fsamples > 0:
             if len(self.__followers) > 0:
                 for f in self.__followers:
-                    print(f.name)
                     mc_sample = self.monte_carlo(f, samples=fsamples, discount=discount)
                     if len(mc_sample) > 0:
                         weak_learners += mc_sample
                         n += 1
-        weak_learners = weak_learners / n
+
+        weak_learners = np.asarray(weak_learners) / n
         QDA_result, keys = self.QDA(weak_learners)
-
         print('BEST SCORE', weak_learners, keys[np.argmax(QDA_result)], str(np.round(100*QDA_result[np.argmax(QDA_result)])) + '%')
-
         sorted_idx = np.argsort(QDA_result)
-
         for qdaidx in sorted_idx[-3:]:
             print(keys[qdaidx], str(np.round(100*QDA_result[qdaidx])) + '%')
 
-        print(QDA_result, keys)
         return weak_learners
 
     def check_likes_for_party_affiliation(self, node, feature_list):
@@ -99,7 +100,7 @@ class MSProfileUser:
             if party_key == 'ALL':
                 continue
             feature_mean, feature_covariance = self.get_mean_and_covariance(party_feature)
-            print(feature_mean, profile_feature, np.linalg.norm(feature_mean - profile_feature), party_key)
+            #print(feature_mean, profile_feature, np.linalg.norm(feature_mean - profile_feature), party_key)
             Nk = multivariate_normal(feature_mean, feature_covariance)
             pxk_pk.append(Nk.pdf(profile_feature)*np.shape(party_feature)[0]/n)
             party_names.append(party_key)

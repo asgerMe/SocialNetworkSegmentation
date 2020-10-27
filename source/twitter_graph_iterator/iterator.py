@@ -33,7 +33,7 @@ class GraphIterator:
         followers_list = []
         id_list = []
         for node in self.nodes.values():
-            if node.followers > leaf_cutoff:
+            if node.followers >= leaf_cutoff:
                 followers_list.append(node.followers)
                 id_list.append(node.id)
 
