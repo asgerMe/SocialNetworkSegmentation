@@ -10,9 +10,9 @@ class NaiveBayesClassifier:
         self.twitter_node = nodegen.new(name)
         self.text = self.twitter_node.description
         self.recent_tweets = self.twitter_node.get_tweets(twitter_id=self.twitter_node.id)
-        tweettext = self.recent_tweets
-        for unit in tweettext:
-            self.text += unit['text'] + ' '
+        #tweettext = self.recent_tweets
+        #for unit in tweettext:
+        #    self.text += unit['text'] + ' '
 
     def __call__(self, *args, **kwargs):
         if self.text == '':
@@ -29,6 +29,7 @@ class NaiveBayesClassifier:
                 word_list[word] = True
                 pi = 1.0 / 1200
                 if word in vocab:
+                    print(word, party)
                     word_match += 1
                     pi = vocab[word]
                 p_cl += np.log(pi)
@@ -52,7 +53,6 @@ class NaiveBayesClassifier:
                     if not word or word in words_per_tweet:
                         continue
                     words_per_tweet[word] = True
-
                     if node.party in vocab:
                         vocab[node.party].append(word)
                         n_tweets_by_party[node.party] += 1
@@ -73,7 +73,7 @@ class NaiveBayesClassifier:
         return p_wc_, n_tweets_by_party
 
     def standardize_word(self, word):
-        if len(word) <= 4:
+        if len(word) <= 5:
             return False
         if word[-1:] == 's' or word[-1:] == 'e':
             word = word[:-1]

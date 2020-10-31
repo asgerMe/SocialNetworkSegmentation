@@ -1,6 +1,7 @@
 import sys
 import os
 from pathlib import Path
+import time
 
 web_path = os.path.join(Path(os.path.abspath("./")).parents[0], 'web')
 sys.path.append(os.path.join(os.getcwd(), 'twitter_graph_iterator'))
@@ -78,16 +79,20 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
         for node_handle in args.addnodes:
             graph_iterator.expand_graph(node_handle)
 
-    for i in range(args.iterations):
-        graph_iterator.next()
-        print('ITERATION: {}'.format(i))
-        print('Progress: {} %'.format((1+i) / args.iterations*100))
-        print('Graph Size: {}'.format(len(graph_iterator.nodes.keys())))
-        print('------------')
+    if args.iterations > 0:
+        while True:
+            for i in range(args.iterations):
+                graph_iterator.next()
+                print('ITERATION: {}'.format(i))
+                print('Progress: {} %'.format((1+i) / args.iterations*100))
+                print('Graph Size: {}'.format(len(graph_iterator.nodes.keys())))
+                print('------------')
 
-    write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
-    pickle.dump(graph_iterator, write_file)
-    write_file.close()
+            write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
+            pickle.dump(graph_iterator, write_file)
+            write_file.close()
+
+            time.sleep(1800)
 
 if args.pbditer > 0:
     pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator)

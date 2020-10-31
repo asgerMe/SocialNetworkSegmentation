@@ -76,6 +76,7 @@ class PbdGraphIterator:
         inverse_connections = self.invert_connections()
 
         for t in range(iterations):
+            print(t)
             for i in self.graph.connections:
                 node_i = self.graph.nodes[i]
                 self.feature_correction(node_i, self.graph.connections)

@@ -9,6 +9,24 @@ from ast import literal_eval
 from scipy.stats import multivariate_normal
 import naive_bayes_profiler
 
+
+PRIOR_ = {
+  "@Enhedslisten": 0.069,
+  "@alternativet": 0.01,
+  "@friegronne": 0.01,
+  "@veganerpartiet": 0.008,
+  "@radikale": 0.068,
+  "@SFpolitik": 0.077,
+
+  "@Spolitik": 0.30,
+  "@venstredk": 0.189,
+  "@KonservativeDK": 0.095,
+  "@DanskDf1995": 0.065,
+  "@LiberalAlliance": 0.023,
+  "@KDDanmark": 0.017,
+  "@NyeBorgerlige": 0.06
+}
+
 class MSProfileUser:
 
     def __init__(self, name, graph, nodegen):
@@ -24,7 +42,7 @@ class MSProfileUser:
 
         self.naive_bayes_classifier = naive_bayes_profiler.NaiveBayesClassifier(name, graph, nodegen)
         self.naive_bayes_result = self.naive_bayes_classifier()
-        print(self.naive_bayes_result)
+
 
         if not isinstance(name, list):
             twitter_info = nodegen.new(name)
@@ -56,15 +74,11 @@ class MSProfileUser:
                     if len(mc_sample) > 0:
                         weak_learners += mc_sample
                         n += 1
-
         weak_learners = np.asarray(weak_learners) / n
         QDA_result, keys = self.QDA(weak_learners)
-        print('BEST SCORE', weak_learners, keys[np.argmax(QDA_result)], str(np.round(100*QDA_result[np.argmax(QDA_result)])) + '%')
+        print(self.naive_bayes_result, QDA_result)
         sorted_idx = np.argsort(QDA_result)
-        for qdaidx in sorted_idx[-3:]:
-            print(keys[qdaidx], str(np.round(100*QDA_result[qdaidx])) + '%')
-
-        return weak_learners
+        return weak_learners, keys[sorted_idx], QDA_result[sorted_idx]
 
     def check_likes_for_party_affiliation(self, node, feature_list):
         if node.id not in self.__graph.connections:
@@ -102,10 +116,10 @@ class MSProfileUser:
             feature_mean, feature_covariance = self.get_mean_and_covariance(party_feature)
             #print(feature_mean, profile_feature, np.linalg.norm(feature_mean - profile_feature), party_key)
             Nk = multivariate_normal(feature_mean, feature_covariance)
-            pxk_pk.append(Nk.pdf(profile_feature)*np.shape(party_feature)[0]/n)
+            pxk_pk.append(Nk.pdf(profile_feature)*PRIOR_[party_key])
             party_names.append(party_key)
 
-        return np.asarray(pxk_pk) / np.sum(pxk_pk), party_names
+        return np.asarray(pxk_pk) / np.sum(pxk_pk), np.asarray(party_names)
 
     def get_mean_and_covariance(self, features):
         feature = np.asarray(features)

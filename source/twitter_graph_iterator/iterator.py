@@ -15,7 +15,11 @@ class GraphIterator:
             self.expand_graph(name)
 
     def expand_graph(self, name):
-        node = self.__node_generator.new(name)
+        if name in self.nodes:
+            node = self.nodes[name]
+        else:
+            node = self.__node_generator.new(name)
+
         self.add_user(node)
         liked_users = self.get_stashed_likes(node.id)
         if not liked_users:
