@@ -24,7 +24,7 @@ class PbdGraphIterator:
                 self.affiliation_list = node.load_affiliation_list()
                 self.parties = list(self.affiliation_list.keys())
 
-            if node.party:
+            if node.party and node.party in self.affiliation_list:
                 fv = self.affiliation_list[node.party][0]
                 fv = np.asarray([fv['eco'], fv['img'], fv['cli']])
                 node.set_feature_vector(fv/np.linalg.norm(fv))
@@ -33,26 +33,26 @@ class PbdGraphIterator:
 
     def feature_correction(self, node_i, connections, d=1.0):
         xi = np.asarray(node_i.feature_vector)
-
         wi = 1.0
-        if node_i.party:
-            wi = 0.01
+        #if node_i.party:
+        #    wi = 0.01
 
         v = np.asarray([0.0, 0.0, 0.0])
         w = wi
-        for j in connections[node_i.id]:
+        for j in connections[node_i.screen_name]:
             node_j = self.graph.nodes[j]
+
             stiffness = 1.0 #self.graph.connections[node_j.id][node_i.id]
             xj = np.asarray(node_j.feature_vector)
             w += 1.0
             dx_ij = (xi - xj)
 
-            if node_i.party:
+            if node_i.party and node_i.party in self.affiliation_list:
                 pfeature = self.affiliation_list[node_i.party]
-                dx_ij += xi - np.asarray([pfeature[0]['eco'], pfeature[0]['img'] , pfeature[0]['cli']])
+                dx_ij += 0.2*(xi - np.asarray([pfeature[0]['eco'], pfeature[0]['img'] , pfeature[0]['cli']]))
 
-            if not node_j.party and not node_i.party:
-                stiffness = 0.01
+            #if not node_j.party and not node_i.party:
+            #    stiffness = 0.01
 
             v += d*stiffness * dx_ij
 
@@ -76,7 +76,6 @@ class PbdGraphIterator:
         inverse_connections = self.invert_connections()
 
         for t in range(iterations):
-            print(t)
             for i in self.graph.connections:
                 node_i = self.graph.nodes[i]
                 self.feature_correction(node_i, self.graph.connections)
@@ -89,10 +88,7 @@ class PbdGraphIterator:
             n = 0
             for node in self.graph.nodes.values():
                 node.set_feature_vector(node.feature_vector / (np.linalg.norm(node.feature_vector) + 0.0000001))
-                if node.party:
-                    self.CM += 20*np.asarray(node.feature_vector)
-                else:
-                    self.CM += np.asarray(node.feature_vector)
+                self.CM += np.asarray(node.feature_vector)
                 n += 1
 
             self.CM = self.CM/n

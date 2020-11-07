@@ -15,15 +15,16 @@ class GraphIterator:
             self.expand_graph(name)
 
     def expand_graph(self, name):
+        print("EXPAND GRAPH WITH", name)
         if name in self.nodes:
             node = self.nodes[name]
         else:
             node = self.__node_generator.new(name)
-
         self.add_user(node)
-        liked_users = self.get_stashed_likes(node.id)
+
+        liked_users = self.get_stashed_likes(node.screen_name)
         if not liked_users:
-            liked_users = node.get_connections(node.id)
+            liked_users = node.get_connections(node.screen_name)
         for user in liked_users:
             if isinstance(user, dict):
                 node_connect = self.__node_generator.new(user)
@@ -31,7 +32,7 @@ class GraphIterator:
                 node_connect = user
 
             self.add_user(node_connect)
-            self.add_connection(node.id, node_connect.id)
+            self.add_connection(node.screen_name, node_connect.screen_name)
 
     def next(self, leaf_cutoff=0):
         followers_list = []
@@ -39,7 +40,7 @@ class GraphIterator:
         for node in self.nodes.values():
             if node.followers >= leaf_cutoff:
                 followers_list.append(node.followers)
-                id_list.append(node.id)
+                id_list.append(node.screen_name)
 
         self.expand_graph(self.multinomial_pick(followers_list, id_list))
 
@@ -57,11 +58,10 @@ class GraphIterator:
         if chosen_index == self.previous_node:
             pick_seed_name = self.seed_names[np.random.randint(0, len(self.seed_names))]
             seed_node = self.__node_generator.new(pick_seed_name)
-            print('Resetting: ', pick_seed_name, '-', seed_node.id)
-            return seed_node.id
+            print('Resetting: ', pick_seed_name, '-', seed_node.screen_name)
+            return seed_node.screen_name
 
         self.previous_node = chosen_index
-
         return chosen_index
 
     def add_connection(self, idx, idy):
@@ -83,7 +83,7 @@ class GraphIterator:
             return False
 
     def add_user(self, user):
-        self.nodes[user.id] = user
+        self.nodes[user.screen_name] = user
 
     def convert_to_dense_matrix(self):
         index = self.get_index()

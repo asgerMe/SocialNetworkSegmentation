@@ -30,16 +30,20 @@ default_path = Path(os.path.abspath("./")).parents[0]
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--path', dest='path', type=str, required=False, default=default_path)
-parser.add_argument('--iter', dest='iterations', type=int, required=False, default=0)
+parser.add_argument('--iter', dest='iterations', type=int, required=False, default=120)
 parser.add_argument('--names', nargs='+', dest='names', required=False, default=[])
-parser.add_argument('--pbditer', dest='pbditer', required=False, default=0, type=int)
+parser.add_argument('--pbditer', dest='pbditer', required=False, default=120, type=int)
+parser.add_argument('--featureiter', dest='featureiter', required=False, default=130, type=int)
 parser.add_argument('--profile', dest='profile', required=False, default='', type=str)
-parser.add_argument('--mcsamples', dest='mcsamples', required=False, default=500, type=int)
-parser.add_argument('--fmcsamples', dest='fmcsamples', required=False, default=100, type=int)
+parser.add_argument('--mcsamples', dest='mcsamples', required=False, default=1200, type=int)
+parser.add_argument('--fmcsamples', dest='fmcsamples', required=False, default=200, type=int)
 parser.add_argument('-show', dest='show', action='store_true')
+parser.add_argument('-train', dest='train', action='store_true')
 parser.add_argument('--partyprofile', dest='partyprofile', action='store_true')
 parser.add_argument('--setparty', dest='setparty', type=str, default='')
 parser.add_argument('-add', '--addnodes', nargs='+', dest='addnodes', required=False)
+parser.add_argument('-c', '--connect', dest='con', required=False)
+
 args = parser.parse_args()
 graph = None
 graph_iterator = None
@@ -74,39 +78,18 @@ with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'twitter_creds/cr
         graph_iterator = GraphIterator(NodeGenerator(CREDENTIALS), seed_names=names)
     else:
         graph_iterator = graph
+        graph_iterator.seed_names = names
 
     if args.addnodes and len(args.addnodes) > 0:
         for node_handle in args.addnodes:
             graph_iterator.expand_graph(node_handle)
 
-    if args.iterations > 0:
-        while True:
-            for i in range(args.iterations):
-                graph_iterator.next()
-                print('ITERATION: {}'.format(i))
-                print('Progress: {} %'.format((1+i) / args.iterations*100))
-                print('Graph Size: {}'.format(len(graph_iterator.nodes.keys())))
-                print('------------')
-
-            write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
-            pickle.dump(graph_iterator, write_file)
-            write_file.close()
-
-            time.sleep(1800)
-
-if args.pbditer > 0:
-    pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator)
-    pbd_iterator(iterations=int(args.pbditer))
-
-    write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
-    pickle.dump(pbd_iterator.graph, write_file)
-    write_file.close()
-    render(pbd_iterator.graph)
-
 if args.profile != '' and args.setparty == '':
-    profiler = MSProfileUser(name=args.profile, graph=graph, nodegen=NodeGenerator(CREDENTIALS))
-    profile_feature = profiler(samples=args.mcsamples, fsamples=args.fmcsamples)
-
+    profiler = MSProfileUser(name=args.profile, graph=graph)
+    maxlikelihood = profiler(samples=args.mcsamples, fsamples=args.fmcsamples, search_connection=args.con)
+    print('')
+    print('--# Best Result #--')
+    print(maxlikelihood)
 
     if args.show:
         profiler.show()
@@ -120,7 +103,7 @@ if args.partyprofile:
             payload.append(node.id)
             party_members.append(node.name)
 
-    profiler = MSProfileUser(name=payload, graph=graph, nodegen=NodeGenerator(CREDENTIALS))
+    profiler = MSProfileUser(name=payload, graph=graph)
     E = profiler(samples=args.mcsamples, fsamples=args.fmcsamples)
 
     if args.show:
@@ -134,6 +117,45 @@ if args.setparty != '' and args.profile != '':
     write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
     pickle.dump(graph, write_file)
     write_file.close()
+
+if args.train:
+    while True:
+        for i in range(args.iterations):
+            graph_iterator.next()
+            print('ITERATION: {}'.format(i))
+            print('Progress: {} %'.format((1 + i) / args.iterations * 100))
+            print('Graph Size: {}'.format(len(graph_iterator.nodes.keys())))
+            print('------------')
+
+        pbd_iterator = pbditerator.PbdGraphIterator(graph_iterator)
+        pbd_iterator(iterations=int(args.pbditer))
+
+        write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
+        pickle.dump(pbd_iterator.graph, write_file)
+        write_file.close()
+        render(pbd_iterator.graph)
+
+        for i in range(args.featureiter):
+            keys = list(graph.nodes.keys())
+            pick_random_index = np.random.randint(low=0, high=len(keys)-1)
+            random_node = graph.nodes[keys[pick_random_index]]
+
+            profiler = MSProfileUser(name=random_node.screen_name, graph=graph)
+            maxlikelihood = profiler(samples=args.mcsamples, fsamples=args.fmcsamples, search_connection=args.con)
+
+            if maxlikelihood:
+                print(' ------------ ')
+                print('Setting feature for: ', random_node.name, 'with:', maxlikelihood)
+                random_node.set_party(maxlikelihood)
+
+        write_file = open(os.path.join(args.path, 'data/graph'), 'wb')
+        pickle.dump(graph, write_file)
+        write_file.close()
+
+
+
+
+
 
 
 

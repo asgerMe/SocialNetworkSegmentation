@@ -5,7 +5,7 @@ import copy
 import api
 import numpy as np
 import sys
-sys.path.append(os.getcwd())
+
 
 class NodeGenerator(api.twitterAPIWrapper):
 
@@ -55,13 +55,13 @@ class NodeGenerator(api.twitterAPIWrapper):
 
     def get_feature_map(self, party, path=None):
         if path is None:
-            path = os.path.join(os.path.abspath("./twitter_node_generator"), 'sentiment.json')
+            path = os.path.join(os.path.abspath("../"), 'data/affiliation_list.json')
 
         with open(path) as rfile:
             party_values = json.load(rfile)
             if party in party_values:
-                feautres = party_values[party]
-                prior_mean = [feautres['eco'], feautres['img'], feautres['cli']]
+                features = party_values[party][0]
+                prior_mean = [features['eco'], features['img'], features['cli']]
             else:
                 prior_mean = [0, 0, 0]
             return prior_mean
@@ -84,7 +84,7 @@ class NodeGenerator(api.twitterAPIWrapper):
 
     def load_affiliation_list(self, path=None):
         if path is None:
-            path = os.path.join(os.path.abspath("./twitter_node_generator"), 'affiliation_list.json')
+            path = os.path.join(os.path.abspath("../"), 'data/affiliation_list.json')
         with open(path) as rfile:
             return json.load(rfile)
 
@@ -121,6 +121,9 @@ class NodeGenerator(api.twitterAPIWrapper):
 
     def set_feature_vector(self, new_feature_vector):
         self.__feature_vector = new_feature_vector
+
+    def set_party(self, new_party):
+        self.__party = new_party
 
     @property
     def id(self):

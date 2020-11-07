@@ -5,10 +5,27 @@
   "@friegronne": [
     {"eco": 0.0, "img": -1.0, "cli": 1.0}, "LeftWing",
     "Frie Grønne",
-    "friegronne"
+    "friegronne",
+    "klimaansvarlige",
+    "antiracistiske",
+    "mangfoldighed",
+    "feministisk"
   ],
-  "@veganerpartiet": [{"eco": 0.0, "img": 0.0, "cli": 1.0}, "LeftWing", "Veganerpartiet" ],
-  "@radikale": [{"eco": 0.7, "img": -0.7, "cli": 1.0},"LeftWing","Radikale Venstre" ],
+  "@veganerpartiet": [{"eco": 0.0, "img": 0.0, "cli": 1.0},
+    "LeftWing",
+    "Veganerpartiet",
+    "dyrerettigheder",
+    "dyr",
+    "veganer",
+    "dyremishandling"
+  ],
+  "@radikale": [{"eco": 0.7, "img": -0.7, "cli": 1.0},
+    "LeftWing",
+    "Radikale",
+    "Venstre",
+    "grønnere",
+    "friere"
+    ],
   "@SFpolitik": [
     {"eco": -0.6, "img": 0.1, "cli": 0.8}, "LeftWing",
     "sf",

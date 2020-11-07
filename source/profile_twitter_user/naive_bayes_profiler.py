@@ -1,15 +1,17 @@
 import re
+import os
 import numpy as np
 
 class NaiveBayesClassifier:
-    def __init__(self, name, graph, nodegen):
+    def __init__(self, name, graph):
         self.graph = graph
         self.profile_node = None
         self.vocab, self.n_tweets = self.get_vocab()
 
-        self.twitter_node = nodegen.new(name)
+        self.twitter_node = graph.nodes[name]
         self.text = self.twitter_node.description
         self.recent_tweets = self.twitter_node.get_tweets(twitter_id=self.twitter_node.id)
+
         #tweettext = self.recent_tweets
         #for unit in tweettext:
         #    self.text += unit['text'] + ' '
@@ -29,16 +31,15 @@ class NaiveBayesClassifier:
                 word_list[word] = True
                 pi = 1.0 / 1200
                 if word in vocab:
-                    print(word, party)
                     word_match += 1
                     pi = vocab[word]
                 p_cl += np.log(pi)
 
             result[party] = p_cl
         if word_match > 0:
-            return sorted(result, key=result.get)[-3:]
+            return sorted(result, key=result.get)
         else:
-            return []
+            return [False]
 
     def get_vocab(self):
         vocab = {}

@@ -10,8 +10,9 @@
       <change beforePath="$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/render_website.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/render_website.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/affiliation_list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +21,86 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/api.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/affiliation_list.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="89" column="112" selection-start-line="89" selection-start-column="112" selection-end-line="89" selection-end-column="112" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,25 +151,26 @@
         <option value="$PROJECT_DIR$/source/profileTwitterUser/profile.py" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/config.json" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/profile.py" />
-        <option value="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" />
-        <option value="$PROJECT_DIR$/source/twitter_node_generator/api.py" />
         <option value="$PROJECT_DIR$/web/graph_display.py" />
         <option value="$PROJECT_DIR$/data/testset.json" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/naive_bayes.py" />
-        <option value="$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py" />
         <option value="$PROJECT_DIR$/web/render_website.py" />
-        <option value="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" />
-        <option value="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" />
         <option value="$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json" />
-        <option value="$PROJECT_DIR$/source/run.py" />
+        <option value="$PROJECT_DIR$/data/affiliation_list.json" />
+        <option value="$PROJECT_DIR$/source/twitter_node_generator/node_generator.py" />
+        <option value="$PROJECT_DIR$/source/twitter_node_generator/api.py" />
+        <option value="$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py" />
+        <option value="$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py" />
         <option value="$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py" />
+        <option value="$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py" />
+        <option value="$PROJECT_DIR$/source/run.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-16" />
-    <option name="y" value="30" />
-    <option name="width" value="1479" />
+    <option name="x" value="601" />
+    <option name="y" value="9" />
+    <option name="width" value="1255" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -98,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,11 +192,44 @@
               <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="pbd_graph_iterator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="profile_twitter_user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="twitter_graph_iterator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="twitter_node_generator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetworkSegmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetworkSegmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="twitter_creds" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -122,16 +237,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\feature_mapping" />
+      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\package" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\data" />
       <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\profile_twitter_user\naive_bayes" />
       <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\twitter_node_generator" />
       <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\twitter_user" />
       <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\twitter_request_api" />
-      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\twitter_graph" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\source\feature_mapping" />
-      <recent name="C:\Users\asger\Documents\GitHub\SocialNetworkSegmentation\package" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -298,40 +413,20 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.2426869" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4963024" visible="true" weight="0.2426869" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" visible="true" weight="0.2426869" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50369763" side_tool="true" weight="0.24507658" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19135803" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24507658" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Python Console" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test web" />
@@ -386,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="235" selection-start-line="2" selection-start-column="235" selection-end-line="2" selection-end-column="235" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/profile.py" />
     <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/sentiment.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -419,53 +507,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/naive_bayes/naive_bayes.py" />
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/affiliation_list.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../PosteriorPomeranian/API/surface/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -479,42 +526,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py">
+    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="235" selection-start-line="2" selection-start-column="235" selection-end-line="2" selection-end-column="235" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/affiliation_list.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="56" column="49" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/twitter_graph_iterator/iterator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/node_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="69" column="37" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/ms_profiler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/profile_twitter_user/naive_bayes_profiler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        <state relative-caret-position="442">
+          <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/twitter_node_generator/node_generator.py">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
+        <state relative-caret-position="136">
+          <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/pbd_graph_iterator/pbditerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="89" column="112" selection-start-line="89" selection-start-column="112" selection-end-line="89" selection-end-column="112" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
