@@ -40,37 +40,16 @@ def render(graph=None):
     <div> {} </div>
     </div>
     
-     <div style="
-        background-color: #F50057; 
-        position: relative;
-        top: 10px;
-        width:33%;
-        padding-top: 30px;
-        padding-right: 30px;
-        padding-bottom: 30px;
-        padding-left: 80px;">
- 
-    <div> {} </div>
     <div> {} </div>
     </div>
     
-    
     <span>{}</span>
-    <span>{}</span>
-    
     </body>
     </html>
     '''.format(htmltag(paragraph('Get political sentiment of danish twitter users')),
            htmltag(paragraph('With twitter social network segmentation, quadratic discriminant analysis and naive bayes !'), p='h4'),
-               htmltag(paragraph(
-                   'Crawl twitter and apply feature propagation from danish politicians'),
-                       p='h4'),
-               htmltag(paragraph(
-                   'With twitter social network segmentation, linear discriminant analysis and naive bayes ! !'),
-                       p='h4'),
            graph_display.canvas(),
            graph_display.script(),
-
         )
 
     with open(os.path.join(Path(os.path.abspath("./")).parents[0], 'index.html'), 'w') as indexfile:
